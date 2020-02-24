@@ -68,7 +68,7 @@ func Validate(email string) *result.Result {
 			Reason: fmt.Sprintf(
 				"%s%s",
 				strings.Title(data.Reason[0:1]),
-				data.Reason[0:1],
+				data.Reason[1:],
 			),
 		}
 	}

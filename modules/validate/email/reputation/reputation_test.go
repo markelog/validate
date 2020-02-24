@@ -71,3 +71,37 @@ func TestBadURL(t *testing.T) {
 	result := Validate("markelog@gmail.com")
 	assert.Nil(t, result)
 }
+
+func TestExceedLimit(t *testing.T) {
+	defer teardown()
+
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+		w.WriteHeader(http.StatusTooManyRequests)
+		w.Header().Set("Content-Type", "application/json")
+		w.Write([]byte("nope"))
+	}))
+	defer server.Close()
+
+	host = server.URL
+
+	result := Validate("markelog@gmail.com")
+	assert.Nil(t, result)
+}
+
+func TestIncorrectFailedResponse(t *testing.T) {
+	defer teardown()
+
+	resp, _ := json.Marshal(response{Status: "fail", Reason: "test"})
+
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.Write(resp)
+	}))
+	defer server.Close()
+
+	host = server.URL
+
+	result := Validate("markelog@gmail.com")
+	assert.Equal(t, result.Valid, false)
+	assert.Equal(t, result.Reason, "Test")
+}
