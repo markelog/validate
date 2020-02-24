@@ -20,12 +20,12 @@ dev: scripts/bin/watcher
 
 unit-tests:
 	@echo "[+] run unit test"
-	$(GO) test -race $(GO_UNIT)
+	@$(GO) test -race $(GO_UNIT)
 .PHONY: unit-tests
 
 integration-tests:
 	@echo "[+] run integration test"
-	@go test -race $(GO_INTEGRATION)
+	@$(GO) test -race $(GO_INTEGRATION)
 .PHONY: integration-tests
 
 test: unit-tests integration-tests
