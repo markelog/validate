@@ -31,5 +31,6 @@ func main() {
 	log.WithFields(logrus.Fields{
 		"port": port,
 	}).Info("Started")
+
 	app.Run(iris.Addr(address))
 }

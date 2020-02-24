@@ -52,4 +52,4 @@ Content-Length: 150
 - `make unit-tests` – executes unit-tests
 - `make integrations-tests` – executes integration-tests
 - `make test` – executes unit and integration tests
-- `make lint` – lint GO code via multiple linters
+- `make lint` – lint sources via multiple linters
