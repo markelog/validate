@@ -1,4 +1,4 @@
-# Validate
+# Validate [![Test](https://github.com/markelog/validate/workflows/Test/badge.svg?branch=master)](https://github.com/markelog/validate/actions)
 
 > Simple validation HTTP-service
 
