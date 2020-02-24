@@ -1,6 +1,8 @@
 package validate
 
 import (
+	"sync"
+
 	"github.com/markelog/validate/modules/validate/email/dmarc"
 	"github.com/markelog/validate/modules/validate/email/domain"
 	"github.com/markelog/validate/modules/validate/email/email"
@@ -37,22 +39,39 @@ func New(value string) *Validate {
 
 // Validate runs all the validations
 func (validate Validate) Validate(field string) (bool, map[string]*result.Result) {
-	result := map[string]*result.Result{}
-	valid := true
+	var (
+		wg  sync.WaitGroup
+		mux sync.Mutex
 
-	for name, validator := range Validators[field] {
-		res := validator(validate.value)
+		result = map[string]*result.Result{}
+		fields = Validators[field]
+		valid  = true
+	)
 
-		if valid {
-			valid = res.Valid
-		}
+	wg.Add(len(fields))
+	for name, validator := range fields {
+		go func(name string, validator Validator) {
+			defer wg.Done()
 
-		if res == nil {
-			continue
-		}
+			res := validator(validate.value)
 
-		result[name] = res
+			if res == nil {
+				return
+			}
+
+			mux.Lock()
+
+			if valid {
+				valid = res.Valid
+			}
+
+			result[name] = res
+
+			mux.Unlock()
+		}(name, validator)
 	}
+
+	wg.Wait()
 
 	return valid, result
 }
