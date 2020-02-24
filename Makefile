@@ -1,4 +1,6 @@
 GO_FILES ?= ./...
+GO_UNIT ?= ./modules/...
+GO_INTEGRATION ?= ./routes/...
 GO = GO111MODULE=on go
 
 install:
@@ -16,9 +18,17 @@ dev: scripts/bin/watcher
 	@scripts/bin/watcher
 .PHONY: watch
 
-test:
-	@echo "[+] test"
-	$(GO) test -race $(GO_FILES)
+unit-tests:
+	@echo "[+] run unit test"
+	$(GO) test -race $(GO_UNIT)
+.PHONY: unit-tests
+
+integration-tests:
+	@echo "[+] run integration test"
+	@go test -race $(GO_INTEGRATION)
+.PHONY: integration-tests
+
+test: unit-tests integration-tests
 .PHONY: test
 
 lint: vet golangci-lint revive sec

@@ -17,10 +17,18 @@ func Up(app *iris.Application, log *logrus.Logger) error {
 		var params Email
 		ctx.ReadJSON(&params)
 
-		validator := validate.New(params.Email)
-		valid, validators := validator.Validate("email")
+		valid, validators := validate.New(params.Email).Validate("email")
 
-		ctx.StatusCode(iris.StatusOK)
+		log.WithFields(logrus.Fields{
+			"email": params.Email,
+		}).Info("Email checked")
+
+		if valid {
+			ctx.StatusCode(iris.StatusOK)
+		} else {
+			ctx.StatusCode(iris.StatusBadRequest)
+		}
+
 		ctx.JSON(iris.Map{
 			"valid":      valid,
 			"validators": validators,
