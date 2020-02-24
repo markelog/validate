@@ -8,7 +8,7 @@ install:
 
 start: install
 	@echo "[+] start"
-	@docker-compose up
+	@go run main.go
 .PHONY: start
 
 dev: scripts/bin/watcher
@@ -18,7 +18,7 @@ dev: scripts/bin/watcher
 
 test:
 	@echo "[+] test"
-	$(GO) test -race -test.parallel 1 $(GO_FILES)
+	$(GO) test -race $(GO_FILES)
 .PHONY: test
 
 watch-test:
