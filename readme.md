@@ -40,7 +40,7 @@ Content-Length: 150
 - [`dmarc`](https://en.wikipedia.org/wiki/DMARC) – checks DMARC related presence in the domain DNS
 - `domain` – checks if email domain exist
 - `smtp` – establishes connection to the SMTP service, sends `RCPT TO` request thus checking if such email address exist
-- `reputation` – checks the [reputation](https://en.wikipedia.org/wiki/Reputation_system) of the email via https://emailrep.io/.
+- [`reputation`](https://en.wikipedia.org/wiki/Reputation_system) – checks the reputation of the email via https://emailrep.io/.
   - _Note:_ Amount of request from one IP-address is limited, it's better to provide the key (see [`/.env.example`](https://github.com/markelog/validate/tree/master/.env.example)). If limit is exceed, response from `emailrep.io` will not be present in the response
 
 ## Development
