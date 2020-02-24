@@ -3,26 +3,23 @@ module github.com/markelog/validate
 go 1.13
 
 require (
-	github.com/canthefason/go-watcher v0.2.4 // indirect
-	github.com/davecgh/go-spew v1.1.1
+	github.com/ajg/form v1.5.1 // indirect
 	github.com/emersion/go-msgauth v0.4.0
-	github.com/fasthttp-contrib/websocket v0.0.0-20160511215533-1f3b11f56072 // indirect
-	github.com/golangci/golangci-lint v1.23.6 // indirect
-	github.com/iris-contrib/middleware/cors v0.0.0-20191219204441-78279b78a367
-	github.com/jinzhu/gorm v1.9.12
+	github.com/gavv/monotime v0.0.0-20190418164738-30dba4353424 // indirect
+	github.com/google/go-querystring v1.0.0 // indirect
+	github.com/imkira/go-interpol v1.1.0 // indirect
 	github.com/joho/godotenv v1.3.0
-	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
 	github.com/kataras/iris/v12 v12.1.8
-	github.com/markelog/pilgrima v0.0.0-20191229054210-7361c0378c0a
-	github.com/mgechev/revive v1.0.1 // indirect
-	github.com/moul/http2curl v1.0.0 // indirect
-	github.com/securego/gosec v0.0.0-20200203094520-d13bb6d2420c // indirect
-	github.com/siebenmann/smtpd v0.0.0-20170816215504-b93303610bbe // indirect
+	github.com/sergi/go-diff v1.1.0 // indirect
+	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.4.2
 	github.com/smancke/mailck v0.0.0-20180319162224-be54df53c96e
-	github.com/stretchr/testify v1.4.0
+	github.com/stretchr/testify v1.5.1
 	github.com/valyala/fasthttp v1.9.0 // indirect
-	github.com/yudai/pp v2.0.1+incompatible // indirect
+	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
+	github.com/yalp/jsonpath v0.0.0-20180802001716-5cc68e5049a0 // indirect
+	github.com/yudai/gojsondiff v1.0.0 // indirect
+	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
 	gopkg.in/gavv/httpexpect.v1 v1.1.1
-	gopkg.in/testfixtures.v2 v2.6.0
+	moul.io/http2curl v1.0.0 // indirect
 )

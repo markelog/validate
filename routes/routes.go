@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"github.com/iris-contrib/middleware/cors"
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/middleware/recover"
 	"github.com/markelog/validate/logger"
@@ -15,7 +14,6 @@ func Up() *iris.Application {
 	)
 
 	app.Logger().Install(log)
-	app.UseGlobal(cors.Default())
 	app.Use(recover.New())
 
 	app.Configure(iris.WithConfiguration(iris.Configuration{

@@ -7,11 +7,10 @@ import (
 	"testing"
 
 	"github.com/kataras/iris/v12"
-	"github.com/markelog/pilgrima/logger"
-	"github.com/markelog/pilgrima/routes/common"
-	"github.com/markelog/pilgrima/test/env"
-	"github.com/markelog/pilgrima/test/request"
-	"github.com/markelog/pilgrima/test/routes"
+	"github.com/markelog/validate/logger"
+	"github.com/markelog/validate/routes/common"
+	"github.com/markelog/validate/test/request"
+	"github.com/markelog/validate/test/routes"
 )
 
 var (
@@ -29,8 +28,6 @@ var (
 )
 
 func TestMain(m *testing.M) {
-	env.Up()
-
 	app = routes.Up()
 	log := logger.Up()
 	log.Out = ioutil.Discard
