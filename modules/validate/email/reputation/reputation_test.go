@@ -17,7 +17,7 @@ func teardown() {
 
 func TestSuccss(t *testing.T) {
 	defer teardown()
-	resp, _ := json.Marshal(response{false})
+	resp, _ := json.Marshal(response{Suspicious: false})
 
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
@@ -34,7 +34,7 @@ func TestSuccss(t *testing.T) {
 
 func TestError(t *testing.T) {
 	defer teardown()
-	resp, _ := json.Marshal(response{true})
+	resp, _ := json.Marshal(response{Suspicious: true})
 
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
