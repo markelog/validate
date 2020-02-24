@@ -21,11 +21,6 @@ test:
 	$(GO) test -race $(GO_FILES)
 .PHONY: test
 
-watch-test:
-	@echo "[+] watch tests"
-	@watchexec --restart --exts "go" --watch . "go test ./..."
-.PHONY: watch-test
-
 lint: vet golangci-lint revive sec
 .PHONY: lint
 
