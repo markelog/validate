@@ -1,11 +1,12 @@
-package validate
+package tools
 
 import (
 	"errors"
 	"strings"
 )
 
-func getDomain(value string) (string, error) {
+// GetDomain returns the domain extract from the email address
+func GetDomain(value string) (string, error) {
 	email := strings.Split(value, "@")
 
 	if len(email) != 2 {

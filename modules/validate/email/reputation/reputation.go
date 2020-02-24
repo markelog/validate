@@ -1,25 +1,30 @@
-package validate
+package reputation
 
 import (
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"time"
+
+	"github.com/markelog/validate/modules/validate/result"
 )
 
-// Third-party service we use to determine reputation
-// Be careful, amount of requests is limited
-const host = "https://emailrep.io"
+var (
+	// Third-party service we use to determine reputation
+	// Be careful, amount of requests is limited
+	host = "https://emailrep.io"
 
-var client = &http.Client{Timeout: 10 * time.Second}
+	client = &http.Client{Timeout: 10 * time.Second}
+)
 
 type response struct {
 	Suspicious bool `json:"suspicious"`
 }
 
-// Reputation validates emails reputation
-func Reputation(email string) *Result {
+// Validate validates emails reputation
+func Validate(email string) *result.Result {
 	var data response
+
 	resp, err := client.Get(fmt.Sprintf("%s/%s", host, email))
 	// In case remote service is unavailable - do not show anything
 	if err != nil {
@@ -34,13 +39,13 @@ func Reputation(email string) *Result {
 	}
 
 	if data.Suspicious {
-		return &Result{
+		return &result.Result{
 			Valid:  false,
 			Reason: "Suspicious email",
 		}
 	}
 
-	return &Result{
+	return &result.Result{
 		Valid: true,
 	}
 }
