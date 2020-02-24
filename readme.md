@@ -48,8 +48,8 @@ Content-Length: 150
 #### Commands
 
 - `make install` – installs stuff
-- `make dev` – starts the server and watches the changes
-- `make unit-tests` – executes the unit-tests
-- `make integrations-tests` – executes the integration-tests
+- `make dev` – starts the server and watches changes
+- `make unit-tests` – executes unit-tests
+- `make integrations-tests` – executes integration-tests
 - `make test` – executes unit and integration tests
 - `make lint` – lint GO code via multiple linters
