@@ -39,6 +39,10 @@ func Validate(email string) *result.Result {
 
 	url := fmt.Sprintf("%s/%s", host, email)
 	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil
+	}
+
 	if key != "" {
 		req.Header.Add("KEY", key)
 	}

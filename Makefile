@@ -5,7 +5,7 @@ GO = GO111MODULE=on go
 
 install:
 	@echo "[+] install"
-	$(GO) get $(GO_FILES)
+	$(GO) get -v -t -d $(GO_FILES)
 .PHONY: install
 
 start: install

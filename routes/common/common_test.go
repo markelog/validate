@@ -45,12 +45,12 @@ func TestMain(m *testing.M) {
 func TestPOST404(t *testing.T) {
 	req := request.Up(app, t)
 
-	response := req.POST("/not-found").
+	common := req.POST("/not-found").
 		WithHeader("Content-Type", "routes/json").
 		Expect().
 		Status(http.StatusNotFound)
 
-	json := response.JSON()
+	json := common.JSON()
 
 	json.Schema(response)
 
