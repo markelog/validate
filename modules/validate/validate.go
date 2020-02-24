@@ -14,7 +14,7 @@ type Validator func(string) *result.Result
 
 // Validators is the list of all available validators
 var Validators = map[string]map[string]Validator{
-	"email": map[string]Validator{
+	"email": {
 		"smtp":       smtp.Validate,
 		"domain":     domain.Validate,
 		"regexp":     email.Validate,
