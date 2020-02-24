@@ -19,7 +19,7 @@ $ docker run -t -p 8080:8080 -e PORT=8080 markelog/validate
 `POST /email/validate`
 
 ```sh
-$ curl -XPOST -d '{"email":"markelog@gmail.com"}' http://localhost:8080/email/validate
+$ curl -i -XPOST -d '{"email":"markelog@gmail.com"}' http://localhost:8080/email/validate
 ```
 
 #### Response
